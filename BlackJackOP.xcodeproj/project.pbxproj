@@ -12,6 +12,10 @@
 		FA11E6332184E73900212718 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA11E6312184E73900212718 /* Main.storyboard */; };
 		FA11E6352184E73900212718 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA11E6342184E73900212718 /* Assets.xcassets */; };
 		FA11E6382184E73900212718 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA11E6362184E73900212718 /* LaunchScreen.storyboard */; };
+		FA11E6402184E75F00212718 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11E63F2184E75F00212718 /* Cards.swift */; };
+		FA11E6422184F13F00212718 /* DeckOfCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11E6412184F13F00212718 /* DeckOfCards.swift */; };
+		FA11E6442185078E00212718 /* MemberOfGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11E6432185078E00212718 /* MemberOfGame.swift */; };
+		FA11E64621850B1F00212718 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11E64521850B1F00212718 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		FA11E6342184E73900212718 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA11E6372184E73900212718 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA11E6392184E73900212718 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA11E63F2184E75F00212718 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
+		FA11E6412184F13F00212718 /* DeckOfCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckOfCards.swift; sourceTree = "<group>"; };
+		FA11E6432185078E00212718 /* MemberOfGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberOfGame.swift; sourceTree = "<group>"; };
+		FA11E64521850B1F00212718 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,10 @@
 				FA11E6342184E73900212718 /* Assets.xcassets */,
 				FA11E6362184E73900212718 /* LaunchScreen.storyboard */,
 				FA11E6392184E73900212718 /* Info.plist */,
+				FA11E63F2184E75F00212718 /* Cards.swift */,
+				FA11E6412184F13F00212718 /* DeckOfCards.swift */,
+				FA11E6432185078E00212718 /* MemberOfGame.swift */,
+				FA11E64521850B1F00212718 /* Game.swift */,
 			);
 			path = BlackJackOP;
 			sourceTree = "<group>";
@@ -135,6 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA11E6402184E75F00212718 /* Cards.swift in Sources */,
+				FA11E64621850B1F00212718 /* Game.swift in Sources */,
+				FA11E6422184F13F00212718 /* DeckOfCards.swift in Sources */,
+				FA11E6442185078E00212718 /* MemberOfGame.swift in Sources */,
 				FA11E6302184E73900212718 /* ViewController.swift in Sources */,
 				FA11E62E2184E73900212718 /* AppDelegate.swift in Sources */,
 			);
