@@ -32,11 +32,11 @@
  • После окончания игры, спрашиваем у пользователя, хочет ли он сыграть еще раз. Если да, то игра начинается заново с раздачи карт, если нет - то завершаем работу.*/
 
 import UIKit
-
+var playerBank = 100
+var dealerBank = 100
 class Game: DeckOfCards{
     var bank = 0
-    var playerBank = 100
-    var dealerBank = 100
+    
     let bet = 10
     func start() {
         bank = 2*bet

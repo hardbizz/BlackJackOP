@@ -20,8 +20,8 @@ class ViewController: UIViewController {
         let game = Game()
         game.start()
         print (game.bank)
-        print(game.playerBank)
-        print(game.dealerBank)
+        print(playerBank)
+        print(dealerBank)
         var deck = DeckOfCards()
         deck.createDeck()
         deck.shuffle()
@@ -48,28 +48,74 @@ class ViewController: UIViewController {
 //        dealer.cards.append(card4.nomination!)
       //  print(player.calcPoints())
       //  print(dealer.calcPoints())
-          print(card1.nomination!)
-          print(card2.nomination!)
-          print(card3.nomination!)
-          print(card4.nomination!)
+          print(card1.nomination!,card2.nomination!)
+          print(card3.nomination!,card4.nomination!)
           print(player.currentPoints)
           print(dealer.currentPoints)
         if player.currentPoints == 21 || dealer.currentPoints == 21{
-            game.checkWinner(player,dealer)}
+            print("-----у кого-то 21 первый круг-----")
+            game.checkWinner(player,dealer)
+            print("-----у кого-то 21 первый круг-----")
+        }
+        
         if player.currentPoints < 21 && dealer.currentPoints < 21 {
-            player.pressedAdd(player)
-            dealer.stepDealer(dealer)
+            
+         player.pressedAdd(player)
             if player.cards.count == 3 { player.cards[2].nomination = deck.giveCard()
-                game.checkWinner(player,dealer)
-            }
-            if dealer.cards.count == 3 { dealer.cards[2].nomination = deck.giveCard()
-                game.checkWinner(player,dealer)
-            }
+                print(player.cards[2].nomination!)}
+           
             print(player.currentPoints)
+            
+            if player.currentPoints > 21 {
+                 print("--------prebor player----------")
+                 print("Победил dealer")
+                print("-----prebor player--------")
+                    game.winner = "dealer"
+                    dealerBank+=game.bank
+                return
+            }
+            
+            dealer.stepDealer(dealer)
+            if dealer.cards.count == 3 { dealer.cards[2].nomination = deck.giveCard()
+                print(dealer.cards[2].nomination!)}
+            
             print(dealer.currentPoints)
-           // game.checkWinner(player,dealer)
-            print(game.playerBank)
-            print(game.dealerBank)
+            
+                if dealer.currentPoints > 21 {
+                    print("-----perebor dealer-------")
+                    print("Победил player")
+                     print("-----perebor dealer-------")
+                    game.winner = "player"
+                    playerBank+=game.bank
+                    return
+                    
+                    
+                }
+             //   print(dealer.cards[2].nomination!)
+            print("---------3----------")
+            game.checkWinner(player,dealer)
+            print("---------3----------")
+            
+            
+//            if player.cards.count == 2 && dealer.cards.count == 2 {
+//                if player.currentPoints > dealer.currentPoints {
+//                    print("Победил player")
+//                    game.winner = "player"
+//                    playerBank+=game.bank
+//                } else {
+//                    print("Победил dealer")
+//                    game.winner = "dealer"
+//                    dealerBank+=game.bank
+//                }
+//
+//            }
+            //print(player.currentPoints)
+           // print(dealer.currentPoints)
+            print("huy")
+         //  game.checkWinner(player,dealer)
+            print("zalupa")
+            print(playerBank)
+            print(dealerBank)
             
 //          print(player.currentPoints)
 //          print(player.cards[2].nomination!)
@@ -78,7 +124,7 @@ class ViewController: UIViewController {
         
         }
     }
-    
-
 }
+
+
 

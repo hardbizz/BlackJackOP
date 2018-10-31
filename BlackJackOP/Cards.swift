@@ -12,11 +12,12 @@ class Cards: DeckOfCards {
     var nomination: String?
     var value: Int {
         get {
-                var a = self.nomination
-                a!.removeLast()
-                if Int(a!) != nil {
-                    return Int(a!)!
-                } else if a! == "A" {
+            
+                var a = self.nomination!
+                a.removeLast()
+                if Int(a) != nil {
+                    return Int(a)!
+                } else if a == "A" {
                     return 11
                 } else {
                     return 10
