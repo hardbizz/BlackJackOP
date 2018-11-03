@@ -16,6 +16,8 @@
 		FA11E6422184F13F00212718 /* DeckOfCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11E6412184F13F00212718 /* DeckOfCards.swift */; };
 		FA11E6442185078E00212718 /* MemberOfGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11E6432185078E00212718 /* MemberOfGame.swift */; };
 		FA11E64621850B1F00212718 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11E64521850B1F00212718 /* Game.swift */; };
+		FA11E648218B6F3100212718 /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11E647218B6F3100212718 /* SecondVC.swift */; };
+		FA11E64A218B6F5200212718 /* ThirdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11E649218B6F5200212718 /* ThirdVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		FA11E6412184F13F00212718 /* DeckOfCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckOfCards.swift; sourceTree = "<group>"; };
 		FA11E6432185078E00212718 /* MemberOfGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberOfGame.swift; sourceTree = "<group>"; };
 		FA11E64521850B1F00212718 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		FA11E647218B6F3100212718 /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
+		FA11E649218B6F5200212718 /* ThirdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,15 +67,17 @@
 			isa = PBXGroup;
 			children = (
 				FA11E62D2184E73900212718 /* AppDelegate.swift */,
-				FA11E62F2184E73900212718 /* ViewController.swift */,
 				FA11E6312184E73900212718 /* Main.storyboard */,
 				FA11E6342184E73900212718 /* Assets.xcassets */,
 				FA11E6362184E73900212718 /* LaunchScreen.storyboard */,
 				FA11E6392184E73900212718 /* Info.plist */,
+				FA11E62F2184E73900212718 /* ViewController.swift */,
 				FA11E63F2184E75F00212718 /* Cards.swift */,
 				FA11E6412184F13F00212718 /* DeckOfCards.swift */,
 				FA11E6432185078E00212718 /* MemberOfGame.swift */,
 				FA11E64521850B1F00212718 /* Game.swift */,
+				FA11E647218B6F3100212718 /* SecondVC.swift */,
+				FA11E649218B6F5200212718 /* ThirdVC.swift */,
 			);
 			path = BlackJackOP;
 			sourceTree = "<group>";
@@ -149,7 +155,9 @@
 			files = (
 				FA11E6402184E75F00212718 /* Cards.swift in Sources */,
 				FA11E64621850B1F00212718 /* Game.swift in Sources */,
+				FA11E648218B6F3100212718 /* SecondVC.swift in Sources */,
 				FA11E6422184F13F00212718 /* DeckOfCards.swift in Sources */,
+				FA11E64A218B6F5200212718 /* ThirdVC.swift in Sources */,
 				FA11E6442185078E00212718 /* MemberOfGame.swift in Sources */,
 				FA11E6302184E73900212718 /* ViewController.swift in Sources */,
 				FA11E62E2184E73900212718 /* AppDelegate.swift in Sources */,
