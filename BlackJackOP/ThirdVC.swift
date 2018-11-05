@@ -19,6 +19,8 @@ let game = Game()
 
 
 
+
+
 class ThirdVC: UIViewController {
 
     @IBOutlet weak var playerName3: UILabel!
@@ -57,48 +59,9 @@ class ThirdVC: UIViewController {
         dealerBankLabel.text = String(dealerBank)
         playerBankLabel.text = String(playerBank)
         
-////        let player = MemberOfGame()
-////        let dealer = MemberOfGame()
-////
-//       player.name = "player"
-//       dealer.name = "dealer"
-//       // let game = Game()
-//        game.start()
-//        secondRing = false
-//        //print (game.bank)
-//      // print(playerBank)
-//       // print(dealerBank)
-////        let deck = DeckOfCards()
-//       deck.createDeck()
-//        deck.shuffle()
-////        let card1 = Cards()
-////        let card2 = Cards()
-////        let card3 = Cards()
-////        let card4 = Cards()
-//
-//        card1.nomination = deck.giveCard()
-//        card2.nomination = deck.giveCard()
-//        card3.nomination = deck.giveCard()
-//        card4.nomination = deck.giveCard()
-//
-//
-//
-//        player.cards.append(card1)
-//        player.cards.append(card2)
-//        dealer.cards.append(card3)
-//        dealer.cards.append(card4)
-//
-//
-//        card1text.text = card1.nomination!
-//        card2text.text = card2.nomination!
-//       // card3text.text = card3.nomination!
-//       // card4text.text = card4.nomination!
-//        playerPointsText.text = String(player.currentPoints)
-//        game.checkWinner(player,dealer)
-//       winnerLabel.text = game.winner
-//        if player.cards.count == 3 { player.cards[2].nomination = deck.giveCard()
-//
-//            print(player.cards[2].nomination!)}
+        
+
+
       
         
        // addCardAction()
@@ -121,13 +84,23 @@ class ThirdVC: UIViewController {
         card4text.text = ""
         card5text.text = ""
         card6text.text = ""
+      //  let defaultLabelBackgroundcolor = card1text.backgroundColor
+        //let transparentColor = UIColor(white: 1, alpha: 1)
+      
+        card1text.backgroundColor = UIColor.clear
+        card2text.backgroundColor = UIColor.clear
+        card3text.backgroundColor = UIColor.clear
+        card4text.backgroundColor = UIColor.clear
+        card5text.backgroundColor = UIColor.clear
+        card6text.backgroundColor = UIColor.clear
+        
         
         playerPointsText.text = String(player.currentPoints)
         dealerPointsText.text = ""
         player.cards.removeAll()
         dealer.cards.removeAll()
         
-        bankLabel.text = String(game.bank)
+        bankLabel.text = String(game.bank) + "$"
         //        let player = MemberOfGame()
         //        let dealer = MemberOfGame()
         //
@@ -135,10 +108,11 @@ class ThirdVC: UIViewController {
         dealer.name = "dealer"
         // let game = Game()
         game.start()
-        dealerBankLabel.text = String(dealerBank)
-        playerBankLabel.text = String(playerBank)
-        bankLabel.text = String(game.bank)
-        secondRing = false
+        dealerBankLabel.text = String(dealerBank) + "$"
+        playerBankLabel.text = String(playerBank) + "$"
+        bankLabel.text = String(game.bank) + "$"
+        secondRingPlayer = false
+        secondRingDealer = false
         //print (game.bank)
         // print(playerBank)
         // print(dealerBank)
@@ -157,8 +131,10 @@ class ThirdVC: UIViewController {
         card2.nomination = deck.giveCard()
         card3.nomination = deck.giveCard()
         card4.nomination = deck.giveCard()
-        card3text.text = "*"
-        card4text.text = "*"
+        card3text.text = ""
+        card4text.text = ""
+        card3text.backgroundColor = UIColor.red
+        card4text.backgroundColor = UIColor.red
         
         
         
@@ -167,8 +143,9 @@ class ThirdVC: UIViewController {
         dealer.cards.append(card3)
         dealer.cards.append(card4)
         
-        
+        card1text.backgroundColor = UIColor.yellow
         card1text.text = card1.nomination!
+        card2text.backgroundColor = UIColor.yellow
         card2text.text = card2.nomination!
         // card3text.text = card3.nomination!
         // card4text.text = card4.nomination!
@@ -184,15 +161,15 @@ class ThirdVC: UIViewController {
     @IBAction func addCardAction() {
         
         winnerLabel.text = " Игрок выбрал добавить карту"
-        secondRing = true
+        secondRingPlayer = true
         player.cards.append(Cards())
         
         player.cards[2].nomination = deck.giveCard()
-        
+        card5text.backgroundColor = UIColor.yellow
         card5text.text = player.cards[2].nomination!
         
-        var colorCards = card1text.backgroundColor
-        card5text.backgroundColor = card1text.backgroundColor
+        
+       // card5text.backgroundColor = yellowColor
         
         
         playerPointsText.text = String(player.currentPoints)
@@ -201,18 +178,22 @@ class ThirdVC: UIViewController {
         game.checkWinner(player,dealer)
         print("----winner2")
         print(game.winner)
-        if game.over == false {
-        secondRing = true
+       // if game.over == false {
+        secondRingDealer = true
         if dealer.currentPoints < 17 {
             dealer.cards.append(Cards())
         }
         if dealer.cards.count == 3 { dealer.cards[2].nomination = deck.giveCard()
             card6text.text = dealer.cards[2].nomination!
+            card6text.backgroundColor = UIColor.yellow
         }
              card3text.text = card3.nomination!
+             card3text.backgroundColor = UIColor.yellow
              card4text.text = card4.nomination!
+             card4text.backgroundColor = UIColor.yellow
+             dealerPointsText.text = String(dealer.currentPoints)
         
-            dealerPointsText.text = String(dealer.currentPoints) }
+  //  }
         
         if game.winner == "" {
             game.checkWinner(player,dealer)}
@@ -226,30 +207,33 @@ class ThirdVC: UIViewController {
     
         
         
-        dealerBankLabel.text = String(dealerBank)
-        playerBankLabel.text = String(playerBank)
+        dealerBankLabel.text = String(dealerBank) + "$"
+        playerBankLabel.text = String(playerBank) + "$"
         bankLabel.text = ""
         
     }
     
     
     @IBAction func passCardOrOpen(_ sender: Any) {
-        winnerLabel.text = " Игрок решил не брать карту"
-        secondRing = true
+       // winnerLabel.text = " Игрок решил не брать карту"
+        secondRingPlayer = true
         
         
         
         //playerPointsText.text = String(player.currentPoints)
         
-        secondRing = true
+        secondRingDealer = true
         if dealer.currentPoints < 17 {
             dealer.cards.append(Cards())
         }
         if dealer.cards.count == 3 { dealer.cards[2].nomination = deck.giveCard()
             card6text.text = dealer.cards[2].nomination!
+            card6text.backgroundColor = UIColor.yellow
         }
         card3text.text = card3.nomination!
+        card3text.backgroundColor = UIColor.yellow
         card4text.text = card4.nomination!
+        card4text.backgroundColor = UIColor.yellow
         
         dealerPointsText.text = String(dealer.currentPoints)
         
@@ -257,8 +241,8 @@ class ThirdVC: UIViewController {
         game.checkWinner(player,dealer)
         winnerLabel.text = game.winner
         
-        dealerBankLabel.text = String(dealerBank)
-        playerBankLabel.text = String(playerBank)
+        dealerBankLabel.text = String(dealerBank) + "$"
+        playerBankLabel.text = String(playerBank) + "$"
         bankLabel.text = ""
        // playerPointsText.text = String(player.currentPoints)
        // dealerPointsText.text = String(dealer.currentPoints)
@@ -266,16 +250,12 @@ class ThirdVC: UIViewController {
     
     
     @IBAction func openCardsLabel() {
-        winnerLabel.text! += "\nИгрок захотел показать карты"
-        secondRing = true
-        
-        
-        
-        
-        
-       // playerPointsText.text = String(player.currentPoints)
-        
-       // secondRing = true
+       // winnerLabel.text! += "\nИгрок захотел показать карты"
+        secondRingPlayer = true
+        secondRingDealer = true
+        card3text.backgroundColor = UIColor.yellow
+        card4text.backgroundColor = UIColor.yellow
+    
      
         card3text.text = card3.nomination!
         card4text.text = card4.nomination!
@@ -288,8 +268,8 @@ class ThirdVC: UIViewController {
         playerPointsText.text = String(player.currentPoints)
         dealerPointsText.text = String(dealer.currentPoints)
         
-        dealerBankLabel.text = String(dealerBank)
-        playerBankLabel.text = String(playerBank)
+        dealerBankLabel.text = String(dealerBank) + "$"
+        playerBankLabel.text = String(playerBank) + "$"
         bankLabel.text = ""
     }
     

@@ -35,6 +35,7 @@ class MemberOfGame: NSObject {
             
         if cards.count == 3 {
             if cards[0].value == 11 && cards[1].value == 11 && cards[2].value == 11 {return 13}
+            if cards[0].value == 11 && cards[1].value == 11 {return 12 + cards[2].value }
             
             if cards[2].value == 11 && (cards[0].value + cards[1].value + cards[2].value > 21) {
                 return cards[0].value + cards[1].value + 1
@@ -59,12 +60,12 @@ class MemberOfGame: NSObject {
 }
     
     func pressedAdd(_ player: MemberOfGame) {
-        secondRing = true
+        
         
         player.cards.append(Cards())
     }
     func playerChoose (_ player: MemberOfGame) {
-        secondRing = true
+        
         if senderT == "Добавить карту" {
             player.cards.append(Cards())
         }
@@ -72,7 +73,7 @@ class MemberOfGame: NSObject {
     }
     
     func stepDealer(_ dealer: MemberOfGame) {
-        secondRing = true
+       // secondRing = true
         if dealer.currentPoints < 17 {
             dealer.cards.append(Cards())
         }

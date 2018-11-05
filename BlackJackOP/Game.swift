@@ -34,7 +34,8 @@
 import UIKit
 var playerBank = 100
 var dealerBank = 100
-var secondRing = false
+var secondRingPlayer = false
+var secondRingDealer = false
 var senderT = "Добавить карту"
 class Game: DeckOfCards{
     
@@ -56,14 +57,14 @@ class Game: DeckOfCards{
                  print("-----у кого-то 21 первый круг-----")
                 print("Победил \(player1.name)")
                  print("-----у кого-то 21 первый круг-----")
-                winner = player1.name
+                winner = "Победил \(player1.name)"
                 playerBank += bank
             }
             if player2.currentPoints == 21 {
                  print("-----у кого-то 21 первый круг-----")
                 print("Победил \(player2.name)")
                  print("-----у кого-то 21 первый круг-----")
-                winner = player2.name
+                winner = "Победил \(player2.name)"
                 playerBank += bank
         }
         }
@@ -83,7 +84,7 @@ class Game: DeckOfCards{
            (player1.currentPoints <  21 && player2.currentPoints < 21 &&
             player1.currentPoints > player2.currentPoints)  {
             print("Победил \(player1.name)")
-            winner = player1.name
+            winner = "Победил \(player1.name)"
             playerBank += bank
         }
         if (player2.currentPoints == 21 && player1.currentPoints != 21) ||
@@ -92,7 +93,7 @@ class Game: DeckOfCards{
                 player2.currentPoints > player1.currentPoints) {
     
             print("Победил \(player2.name)")
-            winner = player2.name
+            winner = "Победил \(player2.name)"
             dealerBank+=bank
             return
         }
@@ -100,14 +101,14 @@ class Game: DeckOfCards{
     }
         if (player1.cards.count == 2 && player1.cards.count == 2) &&
             (player1.currentPoints <  21 && player2.currentPoints < 21) &&
-                 secondRing == true  {
+                 secondRingPlayer == true && secondRingDealer == true {
             if player1.currentPoints > player2.currentPoints {
                 print("Победил \(player1.name)")
-                winner = player1.name
+                winner = "Победил \(player1.name)"
                 playerBank += bank
             } else {
                 print("Победил \(player2.name)")
-                winner = player2.name
+                winner = "Победил \(player2.name)"
                 dealerBank+=bank
                 return
             }
@@ -115,7 +116,7 @@ class Game: DeckOfCards{
     }
     
     func checkWinner(_ player1: MemberOfGame, _ player2: MemberOfGame) {
-        if secondRing == false {
+        if secondRingPlayer == false && secondRingDealer == false{
             if player1.currentPoints == 21 && player2.currentPoints == 21 {
              print("Ничья после первого круга")
                 winner = "Ничья"
@@ -127,29 +128,31 @@ class Game: DeckOfCards{
            if  player1.currentPoints == 21 {
             print("Победил \(player1.name)")
             print("-----у кого-то 21 первый круг-----")
-            self.winner = player1.name
+            winner = "Победил \(player1.name)"
             playerBank += bank
             return
             }
             if  player2.currentPoints == 21 {
                 print("Победил \(player2.name)")
                 print("-----у кого-то 21 первый круг-----")
-                self.winner = player2.name
+                winner = "Победил \(player2.name)"
+                dealerBank += bank
+                return
+            }
+            if player1.currentPoints > 21 && secondRingPlayer == true && secondRingDealer == false {
+                print("PEREBOR u \(nameGamer)")
+                self.over = true
+                winner = "Победил \(player2.name)"
                 dealerBank += bank
                 return
             }
         }
-        if secondRing == true {
-            if player1.currentPoints > 21 && player2.cards.count == 2 {
-                print("PEREBOR u \(nameGamer)")
-                self.over = true
-                self.winner = player2.name
-                dealerBank += bank
-                return
-            }
+        if secondRingPlayer == true && secondRingDealer == true{
+           
+            
             if player2.currentPoints == 21 && player1.currentPoints == 21  {
                 print("ничья по 21 во втором кругу")
-                self.winner = "Ничья"
+                winner = "Ничья"
                 playerBank += bet
                 dealerBank += bet
                 return
@@ -157,27 +160,27 @@ class Game: DeckOfCards{
             if player1.currentPoints > 21 || player2.currentPoints == 21  {
                 print("Перебор у игрока или у диллера 21 во втором кругу")
                 print("Победил диллер")
-                self.winner = player2.name
+                winner = "Победил \(player2.name)"
                 dealerBank += bank
                 return
             }
             if player2.currentPoints > 21 || player1.currentPoints == 21  {
                 print("Перебор у диллера или у игрока 21 во втором кругу")
                 print("Победил игрок")
-                self.winner = player1.name
+                self.winner = "Победил \(player1.name)"
                 playerBank += bank
                 return
             }
             if player1.currentPoints < 21 && player2.currentPoints < 21 {
                 if player1.currentPoints > player2.currentPoints {
                     print("Победил игрок")
-                    self.winner = player1.name
+                    winner = "Победил \(player1.name)"
                     playerBank += bank
                     return
                 }
                 if player2.currentPoints > player1.currentPoints {
                     print("Победил диллер")
-                    winner = player2.name
+                    winner = "Победил \(player2.name)"
                     dealerBank += bank
                     return
             }
