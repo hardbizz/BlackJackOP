@@ -32,16 +32,18 @@
  • После окончания игры, спрашиваем у пользователя, хочет ли он сыграть еще раз. Если да, то игра начинается заново с раздачи карт, если нет - то завершаем работу.*/
 
 import UIKit
-var playerBank = 100
-var dealerBank = 100
-var secondRingPlayer = false
-var secondRingDealer = false
-var senderT = "Добавить карту"
+//var playerBank = 100
+//var dealerBank = 100
+//var secondRingPlayer = false
+//var secondRingDealer = false
+//var gameOver = false
+//var globalWinner = ""
+//var senderT = "Добавить карту"
 class Game: DeckOfCards{
     
     var bank = 0
-    var over = false
-    let bet = 10
+    var over = false // game.over = true - конец игры
+    let bet = 20
     func start() {
         winner = ""
         bank = 2*bet
@@ -50,70 +52,12 @@ class Game: DeckOfCards{
         
     }
     var winner = ""
-    func checkWinner_(_ player1: MemberOfGame, _ player2: MemberOfGame) {
-        if (player1.cards.count == 2 && player1.cards.count == 2) &&
-            (player1.currentPoints == 21 || player2.currentPoints == 21) {
-            if player1.currentPoints == 21 {
-                 print("-----у кого-то 21 первый круг-----")
-                print("Победил \(player1.name)")
-                 print("-----у кого-то 21 первый круг-----")
-                winner = "Победил \(player1.name)"
-                playerBank += bank
-            }
-            if player2.currentPoints == 21 {
-                 print("-----у кого-то 21 первый круг-----")
-                print("Победил \(player2.name)")
-                 print("-----у кого-то 21 первый круг-----")
-                winner = "Победил \(player2.name)"
-                playerBank += bank
-        }
-        }
-    
-        
-        if (player1.cards.count != 2 && player1.cards.count != 2) {
-            if (player1.currentPoints == 21 && player2.currentPoints == 21) ||
-           (player1.currentPoints <  21 && player2.currentPoints < 21 &&
-                player2.currentPoints == player1.currentPoints) {
-            print("Ничья")
-            winner = "Ничья"
-            playerBank += bet
-            dealerBank += bet
-        }
-        if (player1.currentPoints == 21 && player2.currentPoints != 21) ||
-           (player2.currentPoints >  21 && player1.currentPoints < 21) ||
-           (player1.currentPoints <  21 && player2.currentPoints < 21 &&
-            player1.currentPoints > player2.currentPoints)  {
-            print("Победил \(player1.name)")
-            winner = "Победил \(player1.name)"
-            playerBank += bank
-        }
-        if (player2.currentPoints == 21 && player1.currentPoints != 21) ||
-            (player1.currentPoints >  21 && player2.currentPoints < 21) ||
-            (player1.currentPoints <  21 && player2.currentPoints < 21 &&
-                player2.currentPoints > player1.currentPoints) {
-    
-            print("Победил \(player2.name)")
-            winner = "Победил \(player2.name)"
-            dealerBank+=bank
-            return
-        }
-        
-    }
-        if (player1.cards.count == 2 && player1.cards.count == 2) &&
-            (player1.currentPoints <  21 && player2.currentPoints < 21) &&
-                 secondRingPlayer == true && secondRingDealer == true {
-            if player1.currentPoints > player2.currentPoints {
-                print("Победил \(player1.name)")
-                winner = "Победил \(player1.name)"
-                playerBank += bank
-            } else {
-                print("Победил \(player2.name)")
-                winner = "Победил \(player2.name)"
-                dealerBank+=bank
-                return
-            }
-        }
-    }
+    var globalWinner = ""
+    var secondRingPlayer = false
+    var secondRingDealer = false
+    var playerBank = 100
+    var dealerBank = 100
+
     
     func checkWinner(_ player1: MemberOfGame, _ player2: MemberOfGame) {
         if secondRingPlayer == false && secondRingDealer == false{
@@ -141,7 +85,7 @@ class Game: DeckOfCards{
             }
             if player1.currentPoints > 21 && secondRingPlayer == true && secondRingDealer == false {
                 print("PEREBOR u \(nameGamer)")
-                self.over = true
+                //self.over = true
                 winner = "Победил \(player2.name)"
                 dealerBank += bank
                 return
@@ -201,5 +145,18 @@ class Game: DeckOfCards{
     
 }
 }
+    
+    func checkGlobalWinner() {
+        if dealerBank == 200 {
+            over = true
+            globalWinner = "DEALER"
+        }
+        if playerBank == 200 {
+            over = true
+            globalWinner = "\(nameGamer)"
+        }
+        
+    }
+    
     
 }

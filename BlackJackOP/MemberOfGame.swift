@@ -64,13 +64,13 @@ class MemberOfGame: NSObject {
         
         player.cards.append(Cards())
     }
-    func playerChoose (_ player: MemberOfGame) {
+  /*  func playerChoose (_ player: MemberOfGame) {
         
         if senderT == "Добавить карту" {
             player.cards.append(Cards())
         }
         
-    }
+    }*/
     
     func stepDealer(_ dealer: MemberOfGame) {
        // secondRing = true

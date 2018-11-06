@@ -56,26 +56,14 @@ class ThirdVC: UIViewController {
         card3text.text = ""
         card4text.text = ""
         card6text.text = ""
-        dealerBankLabel.text = String(dealerBank)
-        playerBankLabel.text = String(playerBank)
-        
-        
-
-
-      
-        
-       // addCardAction()
-       // if player.cards.count == 3 { player.cards[2].nomination = deck.giveCard()
-            
-      //      print(player.cards[2].nomination!)}
-     //   player.playerChoose(player)
-     //   card5text.text = player.cards[2].nomination!
-        
-        
+        dealerBankLabel.text = String(game.dealerBank)
+        playerBankLabel.text = String(game.playerBank)
+    
     }
     
     
     @IBAction func startButton(_ sender: Any) {
+        if game.over == false {
         print("strart pressed")
         print("s----------------------")
         card1text.text = ""
@@ -108,24 +96,17 @@ class ThirdVC: UIViewController {
         dealer.name = "dealer"
         // let game = Game()
         game.start()
-        dealerBankLabel.text = String(dealerBank) + "$"
-        playerBankLabel.text = String(playerBank) + "$"
+        dealerBankLabel.text = String(game.dealerBank) + "$"
+        playerBankLabel.text = String(game.playerBank) + "$"
         bankLabel.text = String(game.bank) + "$"
-        secondRingPlayer = false
-        secondRingDealer = false
-        //print (game.bank)
-        // print(playerBank)
-        // print(dealerBank)
-        //        let deck = DeckOfCards()
+        game.secondRingPlayer = false
+        game.secondRingDealer = false
+        
         
         deck.createDeck()
         deck.shuffle()
         print("deck----------------------")
         
-        //        let card1 = Cards()
-        //        let card2 = Cards()
-        //        let card3 = Cards()
-        //        let card4 = Cards()
         
         card1.nomination = deck.giveCard()
         card2.nomination = deck.giveCard()
@@ -135,7 +116,6 @@ class ThirdVC: UIViewController {
         card4text.text = ""
         card3text.backgroundColor = UIColor.red
         card4text.backgroundColor = UIColor.red
-        
         
         
         player.cards.append(card1)
@@ -156,12 +136,19 @@ class ThirdVC: UIViewController {
 //        if player.cards.count == 3 { player.cards[2].nomination = deck.giveCard()
 //
 //            print(player.cards[2].nomination!)}
+        
+            game.checkGlobalWinner() }
+            if game.globalWinner == "\(nameGamer)" || game.globalWinner == "DEALER" {
+                winnerLabel.text = "WINNER \(game.globalWinner) !!!!"
+        
+        
+        }
     }
     
     @IBAction func addCardAction() {
-        
-        winnerLabel.text = " Игрок выбрал добавить карту"
-        secondRingPlayer = true
+        if game.over == false {
+       // winnerLabel.text = " Игрок выбрал добавить карту"
+        game.secondRingPlayer = true
         player.cards.append(Cards())
         
         player.cards[2].nomination = deck.giveCard()
@@ -179,7 +166,7 @@ class ThirdVC: UIViewController {
         print("----winner2")
         print(game.winner)
        // if game.over == false {
-        secondRingDealer = true
+        game.secondRingDealer = true
         if dealer.currentPoints < 17 {
             dealer.cards.append(Cards())
         }
@@ -198,31 +185,31 @@ class ThirdVC: UIViewController {
         if game.winner == "" {
             game.checkWinner(player,dealer)}
             winnerLabel.text = game.winner
-        playerPointsText.text = String(player.currentPoints)
-         //   dealerPointsText.text = String(dealer.currentPoints)
-            
-      
-         //   playerPointsText.text = String(player.currentPoints)
-           // winnerLabel.text = game.winner
+            playerPointsText.text = String(player.currentPoints)
+       
     
         
         
-        dealerBankLabel.text = String(dealerBank) + "$"
-        playerBankLabel.text = String(playerBank) + "$"
-        bankLabel.text = ""
+            dealerBankLabel.text = String(game.dealerBank) + "$"
+            playerBankLabel.text = String(game.playerBank) + "$"
+            bankLabel.text = ""
+        
+            game.checkGlobalWinner()
+        }
         
     }
     
     
     @IBAction func passCardOrOpen(_ sender: Any) {
+        if game.over == false {
        // winnerLabel.text = " Игрок решил не брать карту"
-        secondRingPlayer = true
+        game.secondRingPlayer = true
         
         
         
         //playerPointsText.text = String(player.currentPoints)
         
-        secondRingDealer = true
+        game.secondRingDealer = true
         if dealer.currentPoints < 17 {
             dealer.cards.append(Cards())
         }
@@ -241,18 +228,22 @@ class ThirdVC: UIViewController {
         game.checkWinner(player,dealer)
         winnerLabel.text = game.winner
         
-        dealerBankLabel.text = String(dealerBank) + "$"
-        playerBankLabel.text = String(playerBank) + "$"
+        dealerBankLabel.text = String(game.dealerBank) + "$"
+        playerBankLabel.text = String(game.playerBank) + "$"
         bankLabel.text = ""
+        
+        game.checkGlobalWinner()
+        }
        // playerPointsText.text = String(player.currentPoints)
        // dealerPointsText.text = String(dealer.currentPoints)
     }
     
     
     @IBAction func openCardsLabel() {
+        if game.over == false {
        // winnerLabel.text! += "\nИгрок захотел показать карты"
-        secondRingPlayer = true
-        secondRingDealer = true
+        game.secondRingPlayer = true
+        game.secondRingDealer = true
         card3text.backgroundColor = UIColor.yellow
         card4text.backgroundColor = UIColor.yellow
     
@@ -268,9 +259,14 @@ class ThirdVC: UIViewController {
         playerPointsText.text = String(player.currentPoints)
         dealerPointsText.text = String(dealer.currentPoints)
         
-        dealerBankLabel.text = String(dealerBank) + "$"
-        playerBankLabel.text = String(playerBank) + "$"
+        dealerBankLabel.text = String(game.dealerBank) + "$"
+        playerBankLabel.text = String(game.playerBank) + "$"
         bankLabel.text = ""
+        
+        game.checkGlobalWinner()
+        }
+        
+        
     }
     
     
