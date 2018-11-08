@@ -23,6 +23,8 @@ let game = Game()
 
 class ThirdVC: UIViewController {
 
+    @IBOutlet weak var startButton: UIButton!
+    
     @IBOutlet weak var playerName3: UILabel!
     
     @IBOutlet weak var card1text: UILabel!
@@ -46,11 +48,35 @@ class ThirdVC: UIViewController {
     @IBOutlet weak var dealerBankLabel: UILabel!
     
     @IBOutlet weak var playerBankLabel: UILabel!
+    
     @IBOutlet weak var bankLabel: UILabel!
     
+    @IBOutlet weak var addCardButton: UIButton!
+    
+    @IBOutlet weak var passCardButton: UIButton!
+    
+    @IBOutlet weak var openCardButton: UIButton!
+    
+    
+    
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
+        
+        startButton.setTitle("Start!", for: .normal)
+        
+        bankLabel.layer.cornerRadius = 21
+        bankLabel.layer.masksToBounds = true
+        
+        addCardButton.layer.cornerRadius = 20
+        passCardButton.layer.cornerRadius = 20
+        openCardButton.layer.cornerRadius = 20
+        
+        addCardButton.isEnabled = false
+        passCardButton.isEnabled = false
+        openCardButton.isEnabled = false
+        
         playerName3.text = nameGamer
         print(nameGamer)
         card3text.text = ""
@@ -58,12 +84,40 @@ class ThirdVC: UIViewController {
         card6text.text = ""
         dealerBankLabel.text = String(game.dealerBank)
         playerBankLabel.text = String(game.playerBank)
+        
+        startButton.isEnabled = true
+        
     
     }
     
     
     @IBAction func startButton(_ sender: Any) {
-        if game.over == false {
+        
+    
+        
+        
+        if startButton.titleLabel?.text == "Play again!" {
+            viewDidLoad()
+            game.restart()
+        //    game.restart()
+       //     print(startButton.titleLabel!.text)
+       //     print("------restart-----")
+            
+      //      startButton.setTitle("Start!", for: .normal)
+      //      startButton.setTitle("Start!", for: .normal)
+            
+        //    print(startButton.titleLabel!.text)
+         //   print("------restart-----")
+        }
+        
+        startButton.isEnabled = false
+        addCardButton.isEnabled = true
+        passCardButton.isEnabled = true
+        openCardButton.isEnabled = true
+        
+       
+        
+        if game.over == false && winnerLabel.text != "" {
         print("strart pressed")
         print("s----------------------")
         card1text.text = ""
@@ -132,6 +186,13 @@ class ThirdVC: UIViewController {
         playerPointsText.text = String(player.currentPoints)
         game.checkWinner(player,dealer)
         winnerLabel.text = game.winner
+            if game.winner != "" {
+                addCardButton.isEnabled = false
+                passCardButton.isEnabled = false
+                openCardButton.isEnabled = false
+                startButton.isEnabled = true
+            }
+            
         
 //        if player.cards.count == 3 { player.cards[2].nomination = deck.giveCard()
 //
@@ -139,14 +200,15 @@ class ThirdVC: UIViewController {
         
             game.checkGlobalWinner() }
             if game.globalWinner == "\(nameGamer)" || game.globalWinner == "DEALER" {
-                winnerLabel.text = "WINNER \(game.globalWinner) !!!!"
+                winnerLabel.text = "\(game.globalWinner) WIN!!!!"
+                startButton.setTitle("Play again!", for: .normal)
         
         
         }
     }
     
     @IBAction func addCardAction() {
-        if game.over == false {
+        if game.over == false && game.winner == ""{
        // winnerLabel.text = " Игрок выбрал добавить карту"
         game.secondRingPlayer = true
         player.cards.append(Cards())
@@ -196,12 +258,23 @@ class ThirdVC: UIViewController {
         
             game.checkGlobalWinner()
         }
+        if game.globalWinner == "\(nameGamer)" || game.globalWinner == "DEALER" {
+            winnerLabel.text = "\(game.globalWinner) WIN!!!!"
+            startButton.setTitle("Play again!", for: .normal)
+        }
+        
+        if game.winner != "" {
+            addCardButton.isEnabled = false
+            passCardButton.isEnabled = false
+            openCardButton.isEnabled = false
+            startButton.isEnabled = true
+        }
         
     }
     
     
     @IBAction func passCardOrOpen(_ sender: Any) {
-        if game.over == false {
+        if game.over == false && game.winner == ""{
        // winnerLabel.text = " Игрок решил не брать карту"
         game.secondRingPlayer = true
         
@@ -234,13 +307,28 @@ class ThirdVC: UIViewController {
         
         game.checkGlobalWinner()
         }
+        if game.globalWinner == "\(nameGamer)" || game.globalWinner == "DEALER" {
+            winnerLabel.text = "\(game.globalWinner) WIN!!!!"
+            startButton.setTitle("Play again!", for: .normal)
+            
+            
+        }
+        print(startButton.titleLabel?.text)
+        
+        
+        if game.winner != "" {
+            addCardButton.isEnabled = false
+            passCardButton.isEnabled = false
+            openCardButton.isEnabled = false
+            startButton.isEnabled = true
+        }
        // playerPointsText.text = String(player.currentPoints)
        // dealerPointsText.text = String(dealer.currentPoints)
     }
     
     
     @IBAction func openCardsLabel() {
-        if game.over == false {
+        if game.over == false && game.winner == ""{
        // winnerLabel.text! += "\nИгрок захотел показать карты"
         game.secondRingPlayer = true
         game.secondRingDealer = true
@@ -266,7 +354,17 @@ class ThirdVC: UIViewController {
         game.checkGlobalWinner()
         }
         
-        
+        if game.globalWinner == "\(nameGamer)" || game.globalWinner == "DEALER" {
+            winnerLabel.text = "\(game.globalWinner) WIN!!!!"
+            startButton.setTitle("Play again!", for: .normal)
+            
+        }
+        if game.winner != "" {
+            addCardButton.isEnabled = false
+            passCardButton.isEnabled = false
+            openCardButton.isEnabled = false
+            startButton.isEnabled = true
+        }
     }
     
     

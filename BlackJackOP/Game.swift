@@ -43,21 +43,31 @@ class Game: DeckOfCards{
     
     var bank = 0
     var over = false // game.over = true - конец игры
-    let bet = 20
+    let bet = 50
     func start() {
         winner = ""
         bank = 2*bet
         playerBank -= bet
         dealerBank -= bet
-        
     }
+    
     var winner = ""
     var globalWinner = ""
     var secondRingPlayer = false
     var secondRingDealer = false
     var playerBank = 100
     var dealerBank = 100
-
+    func restart() {
+        
+        playerBank = 100
+        dealerBank = 100
+        over = false
+        globalWinner = ""
+        winner = ""
+        
+    }
+   
+    
     
     func checkWinner(_ player1: MemberOfGame, _ player2: MemberOfGame) {
         if secondRingPlayer == false && secondRingDealer == false{
@@ -150,6 +160,7 @@ class Game: DeckOfCards{
         if dealerBank == 200 {
             over = true
             globalWinner = "DEALER"
+            
         }
         if playerBank == 200 {
             over = true
