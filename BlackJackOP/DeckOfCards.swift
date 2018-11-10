@@ -23,7 +23,7 @@ class DeckOfCards: NSObject {
     }
     
     func shuffle() {
-            for i in 0..<52 {
+            for i in 0..<deck.count {
                 let random = Int(arc4random()%52)
                 var temp: String
                 temp = deck[i]

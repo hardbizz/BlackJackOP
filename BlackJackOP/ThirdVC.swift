@@ -63,6 +63,12 @@ class ThirdVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        playerPointsText.layer.cornerRadius = 13
+        playerPointsText.layer.masksToBounds = true
+        dealerPointsText.layer.cornerRadius = 13
+        dealerPointsText.layer.masksToBounds = true
+        startButton.layer.cornerRadius = 30
+        startButton.layer.masksToBounds = true
         
         startButton.setTitle("Start!", for: .normal)
         
@@ -187,6 +193,10 @@ class ThirdVC: UIViewController {
         game.checkWinner(player,dealer)
         winnerLabel.text = game.winner
             if game.winner != "" {
+                card3text.text = card3.nomination!
+                card4text.text = card4.nomination!
+                dealerPointsText.text = String(dealer.currentPoints)
+                
                 addCardButton.isEnabled = false
                 passCardButton.isEnabled = false
                 openCardButton.isEnabled = false
@@ -229,7 +239,7 @@ class ThirdVC: UIViewController {
         print(game.winner)
        // if game.over == false {
         game.secondRingDealer = true
-        if dealer.currentPoints < 17 {
+        if dealer.currentPoints < 17 && player.currentPoints < 21{
             dealer.cards.append(Cards())
         }
         if dealer.cards.count == 3 { dealer.cards[2].nomination = deck.giveCard()
@@ -313,7 +323,7 @@ class ThirdVC: UIViewController {
             
             
         }
-        print(startButton.titleLabel?.text)
+        
         
         
         if game.winner != "" {
@@ -364,6 +374,8 @@ class ThirdVC: UIViewController {
             passCardButton.isEnabled = false
             openCardButton.isEnabled = false
             startButton.isEnabled = true
+            
+            
         }
     }
     

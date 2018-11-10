@@ -12,13 +12,17 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var buttonGo: UIButton!
     @IBOutlet weak var fromTextFiledName: UITextField!
+    
+    @IBOutlet weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        buttonGo.layer.cornerRadius = 15
+        
        // buttonGo.isEnabled = false
         
-    
-       nameGamer = fromTextFiledName.text!
+       //adjustUITextViewHeight(textView)
+      // nameGamer = textView.text!
         
        startButtonclick()
         
@@ -33,7 +37,14 @@ class ViewController: UIViewController {
 
     }
     @IBAction func startButtonclick() {
-        nameGamer = fromTextFiledName.text!
+        nameGamer = textView.text!
+    }
+    
+    func adjustUITextViewHeight(_ arg : UITextView)
+    {
+        arg.translatesAutoresizingMaskIntoConstraints = true
+        arg.sizeToFit()
+        arg.isScrollEnabled = false
     }
 }
 
