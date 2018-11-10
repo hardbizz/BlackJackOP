@@ -17,7 +17,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       buttonGo.layer.cornerRadius = 15
+       buttonGo.layer.cornerRadius = 37.5
+        buttonGo.layer.masksToBounds = true
+        textView.layer.cornerRadius = 25
         
        // buttonGo.isEnabled = false
         

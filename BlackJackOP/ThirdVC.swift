@@ -70,6 +70,9 @@ class ThirdVC: UIViewController {
         startButton.layer.cornerRadius = 30
         startButton.layer.masksToBounds = true
         
+        winnerLabel.text = ""
+        
+        
         startButton.setTitle("Start!", for: .normal)
         
         bankLabel.layer.cornerRadius = 21
@@ -78,6 +81,20 @@ class ThirdVC: UIViewController {
         addCardButton.layer.cornerRadius = 20
         passCardButton.layer.cornerRadius = 20
         openCardButton.layer.cornerRadius = 20
+        
+        card1text.layer.cornerRadius = 5
+        card1text.layer.masksToBounds = true
+        card2text.layer.cornerRadius = 5
+        card2text.layer.masksToBounds = true
+        card3text.layer.cornerRadius = 5
+        card3text.layer.masksToBounds = true
+        card4text.layer.cornerRadius = 5
+        card4text.layer.masksToBounds = true
+        card5text.layer.cornerRadius = 5
+        card5text.layer.masksToBounds = true
+        card6text.layer.cornerRadius = 5
+        card6text.layer.masksToBounds = true
+        
         
         addCardButton.isEnabled = false
         passCardButton.isEnabled = false
@@ -123,7 +140,7 @@ class ThirdVC: UIViewController {
         
        
         
-        if game.over == false && winnerLabel.text != "" {
+        if game.over == false {
         print("strart pressed")
         print("s----------------------")
         card1text.text = ""
@@ -194,7 +211,9 @@ class ThirdVC: UIViewController {
         winnerLabel.text = game.winner
             if game.winner != "" {
                 card3text.text = card3.nomination!
+                card3text.backgroundColor = UIColor.yellow
                 card4text.text = card4.nomination!
+                card4text.backgroundColor = UIColor.yellow
                 dealerPointsText.text = String(dealer.currentPoints)
                 
                 addCardButton.isEnabled = false
