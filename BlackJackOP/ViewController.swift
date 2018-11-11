@@ -8,7 +8,7 @@
 
 import UIKit
 var nameGamer = ""
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var buttonGo: UIButton!
     @IBOutlet weak var fromTextFiledName: UITextField!
@@ -17,20 +17,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       buttonGo.layer.cornerRadius = 37.5
+        buttonGo.layer.cornerRadius = 27.5
         buttonGo.layer.masksToBounds = true
         textView.layer.cornerRadius = 25
         
-       // buttonGo.isEnabled = false
+      
+        fromTextFiledName.delegate = self
+      
         
-       //adjustUITextViewHeight(textView)
-      // nameGamer = textView.text!
         
-       startButtonclick()
-        
-        if fromTextFiledName.text != "" {
-            buttonGo.isEnabled = true
-        }
         
         
     
@@ -42,13 +37,9 @@ class ViewController: UIViewController {
         nameGamer = textView.text!
     }
     
-    func adjustUITextViewHeight(_ arg : UITextView)
-    {
-        arg.translatesAutoresizingMaskIntoConstraints = true
-        arg.sizeToFit()
-        arg.isScrollEnabled = false
-    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return false
 }
-
+}
 
 

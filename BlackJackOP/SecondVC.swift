@@ -10,9 +10,14 @@ import UIKit
 
 class SecondVC: UIViewController {
 
+    @IBOutlet weak var playButton: UIButton!
+    
+    @IBOutlet weak var textViewField: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        playButton.layer.cornerRadius = 27.5
+        textViewField.layer.cornerRadius = 12
         
 
         // Do any additional setup after loading the view.
