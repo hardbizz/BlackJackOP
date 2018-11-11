@@ -63,9 +63,9 @@ class ThirdVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        playerPointsText.layer.cornerRadius = 13
+        playerPointsText.layer.cornerRadius = 10
         playerPointsText.layer.masksToBounds = true
-        dealerPointsText.layer.cornerRadius = 13
+        dealerPointsText.layer.cornerRadius = 10
         dealerPointsText.layer.masksToBounds = true
         startButton.layer.cornerRadius = 30
         startButton.layer.masksToBounds = true
