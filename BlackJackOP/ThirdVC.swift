@@ -71,12 +71,17 @@ class ThirdVC: UIViewController {
         startButton.layer.masksToBounds = true
         
         winnerLabel.text = ""
+       
+        
         
         
         startButton.setTitle("Start!", for: .normal)
         
         bankLabel.layer.cornerRadius = 21
         bankLabel.layer.masksToBounds = true
+        
+        playerPointsText.isHidden = true
+        dealerPointsText.isHidden = true
         
         addCardButton.layer.cornerRadius = 20
         passCardButton.layer.cornerRadius = 20
@@ -122,21 +127,16 @@ class ThirdVC: UIViewController {
         if startButton.titleLabel?.text == "Play again!" {
             viewDidLoad()
             game.restart()
-        //    game.restart()
-       //     print(startButton.titleLabel!.text)
-       //     print("------restart-----")
-            
-      //      startButton.setTitle("Start!", for: .normal)
-      //      startButton.setTitle("Start!", for: .normal)
-            
-        //    print(startButton.titleLabel!.text)
-         //   print("------restart-----")
         }
+        
         
         startButton.isEnabled = false
         addCardButton.isEnabled = true
         passCardButton.isEnabled = true
         openCardButton.isEnabled = true
+        
+        playerPointsText.isHidden = false
+        dealerPointsText.isHidden = false
         
        
         

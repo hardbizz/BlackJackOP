@@ -35,11 +35,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func startButtonclick() {
         nameGamer = textView.text!
+        //fromTextFiledName.becomeFirstResponder()
+        view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return false
 }
+    
 }
 
 
