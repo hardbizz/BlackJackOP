@@ -32,13 +32,7 @@
  • После окончания игры, спрашиваем у пользователя, хочет ли он сыграть еще раз. Если да, то игра начинается заново с раздачи карт, если нет - то завершаем работу.*/
 
 import UIKit
-//var playerBank = 100
-//var dealerBank = 100
-//var secondRingPlayer = false
-//var secondRingDealer = false
-//var gameOver = false
-//var globalWinner = ""
-//var senderT = "Добавить карту"
+
 class Game: DeckOfCards{
     
     var bank = 0

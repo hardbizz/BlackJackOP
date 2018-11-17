@@ -8,11 +8,10 @@
 
 import UIKit
 
-class Cards: DeckOfCards {
+class Card: DeckOfCards {
     var nomination: String?
     var value: Int {
         get {
-            
                 var a = self.nomination!
                 a.removeLast()
                 if Int(a) != nil {

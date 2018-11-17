@@ -9,7 +9,7 @@ class MemberOfGame: NSObject {
    var name:String = ""
     var totalSum = 100
     //var currentPoints = 0
-    var cards: Array <Cards> = []
+    var cards: Array <Card> = []
    // var tempPoints = 0
     var pressed: Bool = false
     
@@ -58,26 +58,9 @@ class MemberOfGame: NSObject {
     }
     
 }
+   
+ 
     
-    func pressedAdd(_ player: MemberOfGame) {
-        
-        
-        player.cards.append(Cards())
-    }
-  /*  func playerChoose (_ player: MemberOfGame) {
-        
-        if senderT == "Добавить карту" {
-            player.cards.append(Cards())
-        }
-        
-    }*/
-    
-    func stepDealer(_ dealer: MemberOfGame) {
-       // secondRing = true
-        if dealer.currentPoints < 17 {
-            dealer.cards.append(Cards())
-        }
-    }
     
 }
 

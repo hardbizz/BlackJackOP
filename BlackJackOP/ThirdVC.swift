@@ -11,10 +11,10 @@ let player = MemberOfGame()
 let dealer = MemberOfGame()
 let deck = DeckOfCards()
 
-let card1 = Cards()
-let card2 = Cards()
-let card3 = Cards()
-let card4 = Cards()
+let card1 = Card()
+let card2 = Card()
+let card3 = Card()
+let card4 = Card()
 let game = Game()
 
 
@@ -201,7 +201,7 @@ class ThirdVC: UIViewController {
         dealer.cards.append(card4)
         
         card1text.backgroundColor = UIColor.yellow
-        card1text.text = card1.nomination!
+        card1text.text = card1.nomination! + "\n" + card1.nomination!.suffix(1)
         card2text.backgroundColor = UIColor.yellow
         card2text.text = card2.nomination!
         // card3text.text = card3.nomination!
@@ -240,7 +240,7 @@ class ThirdVC: UIViewController {
         if game.over == false && game.winner == ""{
        // winnerLabel.text = " Игрок выбрал добавить карту"
         game.secondRingPlayer = true
-        player.cards.append(Cards())
+        player.cards.append(Card())
         
         player.cards[2].nomination = deck.giveCard()
         card5text.backgroundColor = UIColor.yellow
@@ -259,7 +259,7 @@ class ThirdVC: UIViewController {
        // if game.over == false {
         game.secondRingDealer = true
         if dealer.currentPoints < 17 && player.currentPoints < 21{
-            dealer.cards.append(Cards())
+            dealer.cards.append(Card())
         }
         if dealer.cards.count == 3 { dealer.cards[2].nomination = deck.giveCard()
             card6text.text = dealer.cards[2].nomination!
@@ -313,7 +313,7 @@ class ThirdVC: UIViewController {
         
         game.secondRingDealer = true
         if dealer.currentPoints < 17 {
-            dealer.cards.append(Cards())
+            dealer.cards.append(Card())
         }
         if dealer.cards.count == 3 { dealer.cards[2].nomination = deck.giveCard()
             card6text.text = dealer.cards[2].nomination!
